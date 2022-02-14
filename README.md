@@ -1,3 +1,17 @@
+1.
+
+```bash
+npm install
+```
+
+2. Add .env file `REACT_APP_API_KEY`
+
+3.
+
+```bash
+npm start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
