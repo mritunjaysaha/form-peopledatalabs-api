@@ -5,26 +5,23 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Document</title>
     </head>
 
     <body>
-        <form id="form">
+        <form id="form" class="form">
+            <input data-input="api_key" id="api_key" type="text" name="api_key" placeholder="API KEY"
+                aria-label="API KEY">
             <div>
-                <input id="first_name" type="text" name="first_name" placeholder="First Name" label="First Name"
-                    aria-label="First Name">
+                <input data-input="first_name" id="first_name" type="text" name="first_name" placeholder="First Name"
+                    label="First Name" aria-label="First Name">
+                <input data-input="last_name" id="last_name" type="text" name="last_name" placeholder="Last Name"
+                    label="Last Name" aria-label="Last Name">
             </div>
-            <div>
-                <input id="last_name" type="text" name="last_name" placeholder="Last Name" label="Last Name"
-                    aria-label="Last Name">
-            </div>
-            <div>
-                <input id="social_url" type="text" name="social_url" placeholder="linkedin.com/in/username"
-                    label="Social Url" aria-label="Social url">
-            </div>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
+            <input data-input="social_url" id="social_url" type="text" name="social_url"
+                placeholder="linkedin.com/in/username" label="Social Url" aria-label="Social url">
+            <button type="submit">Submit</button>
         </form>
     </body>
 
@@ -35,6 +32,7 @@
     <script>
         new FormComponent(
             document.getElementById("form"),
+            document.getElementById("api_key"),
             document.getElementById("first_name"),
             document.getElementById("last_name"),
             document.getElementById("social_url")

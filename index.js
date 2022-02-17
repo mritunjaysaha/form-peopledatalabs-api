@@ -1,28 +1,6 @@
-function FormComponent(formEl, firstEl, lastEl, socialUrlEl) {
-    const API_KEY =
-        "a367376836a0052565139133a37ccb588a91d7bb49ecf8cbc40f11d650af0d7a";
-
-    function downloadCSV(addresses) {
-        var test_array = [
-            ["name1", 2, 3],
-            ["name2", 4, 5],
-            ["name3", 6, 7],
-            ["name4", 8, 9],
-            ["name5", 10, 11],
-        ];
-        var fname = "IJGResults";
-
-        var csvContent = "data:text/csv;charset=utf-8,";
-        $("#pressme").click(function () {
-            addresses.forEach(function (infoArray, index) {
-                dataString = infoArray.join(",");
-                csvContent += dataString + "\n";
-            });
-
-            var encodedUri = encodeURI(csvContent);
-            window.open(encodedUri);
-        });
-    }
+function FormComponent(formEl, apiEl, firstEl, lastEl, socialUrlEl) {
+    // const API_KEY =
+    //     "a367376836a0052565139133a37ccb588a91d7bb49ecf8cbc40f11d650af0d7a";
 
     /** Convert a 2D array into a CSV string
      */
@@ -57,7 +35,7 @@ function FormComponent(formEl, firstEl, lastEl, socialUrlEl) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const { social_url } = initialValues;
+        const { social_url, api_key: API_KEY } = initialValues;
         fetch(
             `https://api.peopledatalabs.com/v5/person/enrich?api_key=${API_KEY}&pretty=True&profile=${social_url}`
         )
@@ -89,6 +67,7 @@ function FormComponent(formEl, firstEl, lastEl, socialUrlEl) {
     }
 
     const initialValues = {
+        api_key: "",
         first_name: "",
         last_name: "",
         social_url: "",
@@ -96,6 +75,10 @@ function FormComponent(formEl, firstEl, lastEl, socialUrlEl) {
 
     formEl.addEventListener("submit", function (e) {
         handleSubmit(e);
+    });
+
+    apiEl.addEventListener("change", function (e) {
+        handleInput(e);
     });
 
     firstEl.addEventListener("change", function (e) {
